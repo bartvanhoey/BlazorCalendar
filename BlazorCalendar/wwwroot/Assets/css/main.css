@@ -1,0 +1,171 @@
+header {
+  padding: 20px;
+}
+
+.microsoft-login-button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  padding: 5 5;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid #3b3a39;
+  color: #3b3a39;
+  background-color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.microsoft-login-button:hover {
+  text-decoration: none;
+  color: #3b3a39;
+}
+
+.microsoft-login-button img {
+  width: 35px;
+}
+
+.shadow-effect {
+  transition: 0.3s;
+}
+
+.shadow-effect:hover {
+  -webkit-box-shadow: 3px 4px 14px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 4px 14px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 4px 14px 3px rgba(0, 0, 0, 0.75);
+}
+
+.calendar-table {
+  width: 100%;
+  background-color: #f3f2f1;
+  text-align: center;
+}
+
+.calendar-table td {
+  padding: 3px;
+}
+
+.calendar-table thead {
+  background-color: white;
+}
+
+.calendar-table .day {
+  width: 125px;
+  height: 100px;
+  min-width: 125px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 5px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.current-day {
+  border: 2px solid #0078d4;
+  color: #0078d4;
+}
+
+.selected-day {
+  border: 2px solid #004578;
+  color: #004578;
+  background-color: #c7e0f4 !important;
+}
+
+.day .day-event {
+  font-size: 10px;
+  padding: 5px;
+}
+
+@media (max-width: 900px) {
+  .calendar-table .day {
+    width: 100px;
+    height: 50px;
+    min-width: auto;
+  }
+  .day .day-event {
+    display: none;
+  }
+}
+
+.red-orange {
+  background-color: #da3b01;
+  color: white;
+}
+
+.magenta {
+  background-color: #881798;
+  color: white;
+}
+
+.pink-red {
+  background-color: #750b1c;
+  color: white;
+}
+
+.yellow {
+  background-color: #fce100;
+  color: black;
+}
+
+.yellow-green {
+  background-color: #8cbd18;
+  color: white;
+}
+
+.calendar-toolbar {
+  background-color: #0078d4;
+  color: white;
+}
+
+.toolbar-button {
+  background-color: #0078d4;
+  margin: 0px;
+  padding: 5px 10px;
+  text-align: center;
+  vertical-align: middle;
+  outline: none;
+  color: white;
+  font-size: 25px;
+  border: none;
+  font-weight: 100;
+}
+
+.toolbar-button:hover {
+  background-color: #004578;
+}
+
+.toolbar-button:focus {
+  border: none;
+  outline: none;
+}
+
+.fluent-input {
+  display: block;
+  width: 100%;
+  padding: 3 7px;
+  margin: 10px 0px;
+  border: 1px solid #3b3a39;
+}
+
+.fluent-input:focus {
+  outline: none;
+  border: 2px dashed #0078d4;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.event {
+  border-radius: 5px;
+  margin: 10 5px;
+  padding: 5px;
+}
+
+.card {
+  margin: 10px;
+}
+
+.calendar {
+  padding: 10px;
+}

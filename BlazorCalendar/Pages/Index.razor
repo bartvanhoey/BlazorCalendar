@@ -1,7 +1,23 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<header>
+  <h3 class="ms-fontsize-42 ms-fontweight-regular">
+    Welcome to Blazor Calendar
+  </h3>
+  <p class="ms-fontsize-14 ms-fontweight-regular">
+    Blazor Calendar allows you to manage all your events within your Outlook
+    Calendar
+  </p>
+  <AuthorizeView>
+    <NotAuthorized>
+      <p class="ms-fontsize-14 ms-fontweight-regular">
+        Please sign in with your Microsoft Account to get started
+      </p>
+      <a href="" class="microsoft-login-button shadow-effect">
+        <img src="Assets/images/microsoft-icon.jpg" alt="" />Sign in with Microsoft
+      </a>
+    </NotAuthorized>
+  </AuthorizeView>
+</header>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@* Calendar Component *@
