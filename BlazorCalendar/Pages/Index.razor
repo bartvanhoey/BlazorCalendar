@@ -21,3 +21,18 @@
 </header>
 
 @* Calendar Component *@
+
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-9">
+    <Calendar>
+      <DayTemplate Context="day">
+        @{
+          string currentDayCssClass = day.Date == DateTime.Now.Date ? "current-day" : "";
+        }
+        <div class="day shadow-effect @currentDayCssClass">
+          <h3 class="ms-fontsize-24 ms-fontweight-regular">@day.Date.Day</h3>
+        </div>
+      </DayTemplate>
+    </Calendar>
+  </div>
+</div>
