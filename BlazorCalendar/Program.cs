@@ -22,6 +22,8 @@ namespace BlazorCalendar
             builder.Services.AddMsalAuthentication(options =>
             {
                 builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
+                // Ask for permissions only
+                options.ProviderOptions.DefaultAccessTokenScopes.Add("https://graph.microsoft.com/Calendars.ReadWrite");
             });
 
             await builder.Build().RunAsync();
