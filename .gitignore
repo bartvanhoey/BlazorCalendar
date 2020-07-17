@@ -467,3 +467,4 @@ BlazorCalendar.Client/obj/Debug/netstandard2.0/BlazorCalendar.Client.RazorCompon
 BlazorCalendar.Client/obj/Debug/netstandard2.0/BlazorCalendar.Client.RazorCoreGenerate.cache
 BlazorCalendar.Client/obj/Debug/netstandard2.0/BlazorCalendar.Client.TagHelpers.output.cache
 BlazorCalendar.Client/obj/Debug/netstandard2.0/project.razor.json
+BlazorCalendar/wwwroot/appsettings.json
