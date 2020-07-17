@@ -58,4 +58,9 @@
 
 @code {
   private CalendarDay selectedDay = new CalendarDay() { Date = DateTime.Now };
+
+  protected override void OnInitialized()
+  {
+    AddEvent.OnEventAdded += () => { StateHasChanged(); };
+  }
 } 

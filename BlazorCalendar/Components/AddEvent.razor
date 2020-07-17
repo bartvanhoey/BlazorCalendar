@@ -35,6 +35,11 @@
     System.Console.WriteLine($"Total Events in Day: {SelectedDay.Events.Count} | {model.Subject} {model.StartDate} {model.EndDate}");
     model = new CalendarEvent();
     
+    OnEventAdded.Invoke();
+
     // TODO Push the event to the API
   }
+
+  public static event Action OnEventAdded = () => {};
+
 }
