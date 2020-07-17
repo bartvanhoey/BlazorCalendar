@@ -28,12 +28,13 @@
   
     if (SelectedDay.Events == null) SelectedDay.Events = new List<CalendarEvent>();
     
+    var calendarEvent = new CalendarEvent { Subject = model.Subject, StartDate = model.StartDate, EndDate =model.EndDate};
 
-    SelectedDay.Events.Add(model);
+    SelectedDay.Events.Add(calendarEvent);
 
     System.Console.WriteLine($"Total Events in Day: {SelectedDay.Events.Count} | {model.Subject} {model.StartDate} {model.EndDate}");
-    model.Subject = string.Empty;
-
+    model = new CalendarEvent();
+    
     // TODO Push the event to the API
   }
 }

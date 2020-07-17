@@ -1,0 +1,26 @@
+<div class="ms-depth-16 card">
+  <div class="card-content">
+    <h3 class="ms-fontsize-22 ms-fontweight-regular">@SelectedDay.Date.ToLongDateString()</h3>
+      @if (SelectedDay.Events == null || SelectedDay.Events.Count == 0) {
+        <h3 class="ms-fontsize-14 ms-fontweight-regular">No Events in this Day</h3>
+      }
+      else
+      {
+        @foreach (var item in SelectedDay.Events)
+        {
+          <div class="event shadow-effect @item.Color">
+            <h3 class="ms-fontsize-14 ms-fontweight-regular">
+             @item.StartDate.ToString("HH-MM") to @item.EndDate.ToString("HH-MM")
+            </h3>
+            <p class="ms-fontsize-11 ms-fontweight-regular">
+              @item.Subject
+            </p>
+          </div>
+        }
+      }
+  </div>
+</div>
+
+@code {
+  [Parameter] public CalendarDay SelectedDay { get; set; }
+}
