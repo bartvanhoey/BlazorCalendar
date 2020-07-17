@@ -35,7 +35,7 @@
             @if (day.Events != null && day.Events.Count > 0) {
               var firstEvent = day.Events.FirstOrDefault();
               <div class="day-event @firstEvent.Color">
-                  @if(firstEvent.Subject.Length  > 25){
+                  @if (firstEvent.Subject.Length  > 25){
                       @firstEvent.Subject.Substring(0,25)<text>...</text>
                   }
                   else {
