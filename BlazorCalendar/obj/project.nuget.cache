@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Jau7ocU/8gDh4PRwZsWcDCJYL//mCk8mGMnrukP9FQLvOEeOhuMgh/66bFUNxo2d3ORVAU8xlOy8jVpOayQg8w==",
+  "dgSpecHash": "oiC0h+barZyTDEtmkbwR5mnGQMz49DeMEX01ujRry0tDjfJyEIzNqFdoSMQAMnOlUTv8enShG0Dt8m4tnIrRHA==",
   "success": true,
   "projectFilePath": "D:\\_Blazor\\BlazorCalendar\\BlazorCalendar\\BlazorCalendar.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\bartv\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.3\\microsoft.extensions.primitives.3.1.3.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\microsoft.jsinterop\\3.1.3\\microsoft.jsinterop.3.1.3.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\microsoft.jsinterop.webassembly\\3.2.0\\microsoft.jsinterop.webassembly.3.2.0.nupkg.sha512",
+    "C:\\Users\\bartv\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
