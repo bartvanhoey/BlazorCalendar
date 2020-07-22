@@ -1,3 +1,139 @@
+@inject ICalendarEventsProvider eventsProvider
+
+   <!-- Calendar -->
+<div class="calendar">
+  <div class="row">
+    <div class="col-sm-12 col-lg-2">
+      <select name="" id="" class="fluent-input" @onchange="SelectYear">
+        @for (int i = 2010; i < 2022; i++)
+        {
+          <option value="">@i</option>
+        }
+      </select>
+    </div>
+    <div class="col-sm-12 col-lg-2">
+      <select name="" id="" class="fluent-input" @onchange=SelectMonth>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+    </div>
+
+  </div>
+  <table class="calendar-table">
+    <thead>
+      <tr>
+        <td>Sun</td>
+        <td>Mon</td>
+        <td>Tue</td>
+        <td>Wed</td>
+        <td>Thu</td>
+        <td>Fri</td>
+        <td>Sat</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (int row = 0; row < rowSCount; row++)
+      {
+        <tr>
+            @foreach (var day in days.Skip(row * 7).Take(7))
+            {
+              <td>
+                @DayTemplate(day)
+              </td>
+            }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+@code {
+  [Parameter] public RenderFragment<CalendarDay> DayTemplate { get; set; }
+  private int year = 2020;
+  private int month = 05;
+  private List<CalendarDay> days = new List<CalendarDay>();
+  int numberOfEmptyDays;
+  int rowSCount = 0;
+
+  async Task SelectYear(ChangeEventArgs e)
+  {
+    year = Convert.ToInt32(e.Value.ToString());
+    UpdateCalendar();
+    await SyncEventsFromExternalProviderToCalendar();
+  }
+
+  async Task SelectMonth(ChangeEventArgs e)
+  {
+    month = Convert.ToInt32(e.Value.ToString());
+    UpdateCalendar();
+    await SyncEventsFromExternalProviderToCalendar();
+  }
+
+  void UpdateCalendar()
+  {
+    days = new List<CalendarDay>();
+
+    // calculate number of empty days
+    var firstDayDate = new DateTime(year, month, 1);
+    var dayOfWeek = firstDayDate.DayOfWeek;
+    if (dayOfWeek == DayOfWeek.Sunday)
+    {
+      numberOfEmptyDays = 0;
+    }
+    else
+    {
+      numberOfEmptyDays = (int)dayOfWeek;
+    }
+
+    // Add Empty Days
+    for (int i = 0; i < numberOfEmptyDays; i++)
+    {
+      days.Add(new CalendarDay { DayNumber = i, IsEmpty = true });
+    }
+
+    // Add the Month Days
+    var numberOfDaysInMonth = DateTime.DaysInMonth(year, month);
+    for (int i = 0; i < numberOfDaysInMonth; i++)
+    {
+      days.Add(new CalendarDay { DayNumber = i + 1, Date = new DateTime(year, month, i + 1), IsEmpty = false, Events = new List<CalendarEvent>() });
+    }
+
+    // Calculate numberOfRows
+    var remaining = days.Count % 7;
+    if (remaining == 0) rowSCount = days.Count / 7;
+    else rowSCount = days.Count / 7 + 1;
+    Console.WriteLine($"Total Rows: {rowSCount} | number of Empty Days: {numberOfEmptyDays} | Month Days: {numberOfDaysInMonth}");
+  }
+
+  async Task SyncEventsFromExternalProviderToCalendar()
+  {
+    var events = await eventsProvider.GetEventsInMonthAsync(year, month);
+
+    foreach (var day in days)
+    {
+      if (day.IsEmpty) continue;
+
+      var eventsInDay = events.Where(e => e.StartDate.Date <= day.Date && e.EndDate.Date > day.Date);
+
+      if (eventsInDay.Any()) day.Events.AddRange(eventsInDay);
+
+    }
+  }
+
+
+
+}
+
 <div class="ms-depth-16 card">
   <EditForm model="model" OnValidSubmit="() => AddEventToSelectedDay()">
       <div class="calendar-toolbar">
@@ -19,7 +155,7 @@
   
   private CalendarEvent model = new CalendarEvent();
 
-  public void AddEventToSelectedDay()
+  private async Task AddEventToSelectedDay()
   {
     model.StartDate = new DateTime(SelectedDay.Date.Year, SelectedDay.Date.Month, SelectedDay.Date.Day,
          model.StartDate.Hour, model.StartDate.Minute, 0 );
@@ -37,7 +173,7 @@
     
     OnEventAdded.Invoke();
 
-    // TODO Push the event to the API
+    await eventsProvider.AddCalenderEventAsync(calendarEvent);
   }
 
   public static event Action OnEventAdded = () => {};
