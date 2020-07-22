@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oiC0h+barZyTDEtmkbwR5mnGQMz49DeMEX01ujRry0tDjfJyEIzNqFdoSMQAMnOlUTv8enShG0Dt8m4tnIrRHA==",
+  "dgSpecHash": "Bo1haUEQkvliCKu4aFFVYnTu6u7mN4RaLqs01N12SNnQ5k5FJTalqD81ncngBBVUh7LfwJW32AogV+GsIiHUlA==",
   "success": true,
   "projectFilePath": "D:\\_Blazor\\BlazorCalendar\\BlazorCalendar\\BlazorCalendar.csproj",
   "expectedPackageFiles": [
@@ -44,7 +44,8 @@
     "C:\\Users\\bartv\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.7.1\\system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\system.text.encodings.web\\4.7.0\\system.text.encodings.web.4.7.0.nupkg.sha512",
     "C:\\Users\\bartv\\.nuget\\packages\\system.text.json\\4.7.1\\system.text.json.4.7.1.nupkg.sha512",
-    "C:\\Users\\bartv\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512"
+    "C:\\Users\\bartv\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512",
+    "C:\\Users\\bartv\\.nuget\\packages\\timezoneconverter\\3.2.0\\timezoneconverter.3.2.0.nupkg.sha512"
   ],
   "logs": []
 }

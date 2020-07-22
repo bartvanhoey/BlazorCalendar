@@ -1,3 +1,4 @@
+@inject ICalendarEventsProvider eventsProvider
 
    <!-- Calendar -->
 <div class="calendar">
@@ -64,16 +65,18 @@
   int numberOfEmptyDays;
   int rowSCount = 0;
 
-  void SelectYear(ChangeEventArgs e)
+  async Task SelectYear(ChangeEventArgs e)
   {
     year = Convert.ToInt32(e.Value.ToString());
     UpdateCalendar();
+    await SyncEventsFromExternalProviderToCalendar();
   }
 
-  void SelectMonth(ChangeEventArgs e)
+  async Task SelectMonth(ChangeEventArgs e)
   {
     month = Convert.ToInt32(e.Value.ToString());
     UpdateCalendar();
+    await SyncEventsFromExternalProviderToCalendar();
   }
 
   void UpdateCalendar()
@@ -102,19 +105,32 @@
     var numberOfDaysInMonth = DateTime.DaysInMonth(year, month);
     for (int i = 0; i < numberOfDaysInMonth; i++)
     {
-      days.Add(new CalendarDay { DayNumber = i + 1, Date = new DateTime(year, month, i + 1), IsEmpty = false });
+      days.Add(new CalendarDay { DayNumber = i + 1, Date = new DateTime(year, month, i + 1), IsEmpty = false, Events = new List<CalendarEvent>() });
     }
 
     // Calculate numberOfRows
     var remaining = days.Count % 7;
     if (remaining == 0) rowSCount = days.Count / 7;
     else rowSCount = days.Count / 7 + 1;
-
     Console.WriteLine($"Total Rows: {rowSCount} | number of Empty Days: {numberOfEmptyDays} | Month Days: {numberOfDaysInMonth}");
+  }
+
+  async Task SyncEventsFromExternalProviderToCalendar()
+  {
+    var events = await eventsProvider.GetEventsInMonthAsync(year, month);
+
+    foreach (var day in days)
+    {
+      if (day.IsEmpty) continue;
+
+      var eventsInDay = events.Where(e => e.StartDate.Date <= day.Date && e.EndDate.Date > day.Date);
+
+      if (eventsInDay.Any()) day.Events.AddRange(eventsInDay);
+
+    }
 
 
   }
-
 
 
 

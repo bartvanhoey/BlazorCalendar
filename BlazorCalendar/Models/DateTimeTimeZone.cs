@@ -12,7 +12,6 @@ namespace BlazorCalendar.Models
 
             TimeZoneInfo timeZone = null;
             if (TimeZone == "UTC") {
-                var utc = TimeZoneInfo.FindSystemTimeZoneById("UTC");
                 timeZone = TimeZoneInfo.Utc;
             }
             else
